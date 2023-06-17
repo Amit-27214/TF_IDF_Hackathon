@@ -18,7 +18,7 @@ def load_vocab():
 
 def load_documents():
     documents = []
-    with codecs.open('documents.txt', 'r', encoding='utf-8'') as f:
+    with codecs.open('documents.txt', 'r', encoding='utf-8') as f:
         documents = f.readlines()
     documents = [document.strip().split() for document in documents]
 
