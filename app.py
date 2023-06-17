@@ -6,9 +6,9 @@ from wtforms import StringField, SubmitField
 
 def load_vocab():
     vocab = {}
-    with codecs.open('vocab.txt', 'r') as f:
+    with open('vocab.txt', 'r') as f:
         vocab_terms = f.readlines()
-    with codecs.open('idf-values.txt', 'r') as f:
+    with open('idf-values.txt', 'r') as f:
         idf_values = f.readlines()
     
     for (term, idf_value) in zip(vocab_terms, idf_values):
@@ -18,7 +18,7 @@ def load_vocab():
 
 def load_documents():
     documents = []
-    with codecs.open('documents.txt', 'r') as f:
+    with open('documents.txt', 'r') as f:
         documents = f.readlines()
     documents = [document.strip().split() for document in documents]
 
@@ -28,7 +28,7 @@ def load_documents():
 
 def load_inverted_index():
     inverted_index = {}
-    with codecs.open('inverted-index.txt', 'r') as f:
+    with open('inverted-index.txt', 'r') as f:
         inverted_index_terms = f.readlines()
 
     for row_num in range(0, len(inverted_index_terms), 2):
@@ -40,7 +40,7 @@ def load_inverted_index():
     return inverted_index
 
 def load_link_of_qs():
-    with codecs.open("Qindex.txt", 'r') as f:
+    with open("Qindex.txt", 'r') as f:
         links = f.readlines()
 
     return links
