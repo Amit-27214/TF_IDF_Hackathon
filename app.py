@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 import math
-import chardet
+# import chardet
 from flask import Flask, render_template, request, jsonify, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
