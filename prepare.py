@@ -9,7 +9,7 @@ def find_encoding(fname):
 filename = 'index.txt'
 
 # Read the content of the file
-with open(filename, 'r',encoding='utf-8') as f:
+with open(filename, 'r',encoding='latin-1',errors ="ignore") as f:
     lines = f.readlines()
 
 # Convert all lines to lowercase
@@ -37,7 +37,7 @@ number = int(float(number_text.split()[0]))
 print(number)
 
 # Write the modified content back to the file
-with open(filename, 'w',encoding='utf-8', errors ='ignore') as f:
+with open(filename, 'w',encoding='latin-1', errors ="ignore") as f:
     f.writelines(lines)
 
 my_encoding = find_encoding(filename)
@@ -74,10 +74,10 @@ print('Sample document: ', documents[0])
 filename = 'vocab.txt'
 
 # Open the file in write mode and truncate its content
-with open(filename, 'w', encoding='utf-8',errors ='ignore') as f:
+with open(filename, 'w', encoding='latin-1',errors ="ignore") as f:
     f.truncate()
 
-with open('vocab.txt', 'w',encoding='utf-8',errors ='ignore') as f:
+with open('vocab.txt', 'w',encoding='latin-1',errors ="ignore") as f:
     for key in vocab.keys():
         f.write("%s\n" % key)
 
@@ -85,10 +85,10 @@ with open('vocab.txt', 'w',encoding='utf-8',errors ='ignore') as f:
 filename = 'idf-values.txt'
 
 # Open the file in write mode and truncate its content
-with open(filename, 'w',encoding='utf-8',errors ='ignore') as f:
+with open(filename, 'w',encoding='latin-1',errors ="ignore") as f:
     f.truncate()
 
-with open('idf-values.txt', 'w',encoding='utf-8',errors ='ignore') as f:
+with open('idf-values.txt', 'w',encoding='latin-1',errors ="ignore") as f:
     for key in vocab.keys():
         f.write("%s\n" % vocab[key])
 
@@ -96,10 +96,10 @@ with open('idf-values.txt', 'w',encoding='utf-8',errors ='ignore') as f:
 filename = 'documents.txt'
 
 # Open the file in write mode and truncate its content
-with open(filename, 'w',encoding='utf-8',errors ='ignore') as f:
+with open(filename, 'w',encoding='latin-1',errors ="ignore") as f:
     f.truncate()
 
-with open('documents.txt', 'w',encoding='utf-8',errors ='ignore') as f:
+with open('documents.txt', 'w',encoding='latin-1',errors ="ignore") as f:
     for document in documents:
         f.write("%s\n" % ' '.join(document))
 
@@ -116,10 +116,10 @@ for index, document in enumerate(documents):
 filename = 'inverted-index.txt'
 
 # Open the file in write mode and truncate its content
-with open(filename, 'w',encoding='utf-8',errors ='ignore') as f:
+with open(filename, 'w',encoding='latin-1',errors ="ignore") as f:
     f.truncate()
 
-with open('inverted-index.txt', 'w',encoding='utf-8',errors ='ignore') as f:
+with open('inverted-index.txt', 'w',encoding='latin-1',errors ="ignore") as f:
     for key in inverted_index.keys():
         f.write("%s\n" % key)
         f.write("%s\n" % ' '.join([str(doc_id) for doc_id in inverted_index[key]]))
