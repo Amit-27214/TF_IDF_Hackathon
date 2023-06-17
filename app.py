@@ -1,51 +1,52 @@
-from flask import Flask, jsonify
 import math
-# import chardet
-from flask import Flask, render_template, request, jsonify, url_for
+import codecs
+from flask import Flask, render_template, request, jsonify
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-# # s1 = input('Enter your question ')
-# # print(s1)
+
 def load_vocab():
     vocab = {}
-    with open('vocab.txt', 'r') as f:
+    with codecs.open('vocab.txt', 'r', encoding='latin-1') as f:
         vocab_terms = f.readlines()
-    with open('idf-values.txt', 'r') as f:
+    with codecs.open('idf-values.txt', 'r', encoding='latin-1') as f:
         idf_values = f.readlines()
     
-    for (term,idf_value) in zip(vocab_terms, idf_values):
+    for (term, idf_value) in zip(vocab_terms, idf_values):
         vocab[term.strip()] = int(idf_value.strip())
     
     return vocab
 
 def load_documents():
     documents = []
-    with open('documents.txt', 'r') as f:
+    with codecs.open('documents.txt', 'r', encoding='latin-1') as f:
         documents = f.readlines()
     documents = [document.strip().split() for document in documents]
 
-    print('Number of documents: ', len(documents))
-    print('Sample document: ', documents[0])
+    print('Number of documents:', len(documents))
+    print('Sample document:', documents[0])
     return documents
 
 def load_inverted_index():
     inverted_index = {}
-    with open('inverted-index.txt', 'r') as f:
+    with codecs.open('inverted-index.txt', 'r', encoding='latin-1') as f:
         inverted_index_terms = f.readlines()
 
-    for row_num in range(0,len(inverted_index_terms),2):
+    for row_num in range(0, len(inverted_index_terms), 2):
         term = inverted_index_terms[row_num].strip()
         documents = inverted_index_terms[row_num+1].strip().split()
         inverted_index[term] = documents
     
-    print('Size of inverted index: ', len(inverted_index))
+    print('Size of inverted index:', len(inverted_index))
     return inverted_index
 
 def load_link_of_qs():
-    with open("Qindex.txt", "r") as f:
+    with codecs.open("Qindex.txt", "r", encoding='latin-1') as f:
         links = f.readlines()
 
     return links
+
+# The rest of the code remains the same...
+
 
 def find_index(l1, l2):
     for i in range(len(l2)):
