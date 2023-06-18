@@ -144,6 +144,7 @@ def calculate_sorted_order_of_documents(query_terms):
 # print(ans_results)
 
 app = Flask(__name__, static_folder='static')
+app.template_folder = 'Templates'
 
 app.config['SECRET_KEY'] = 'Ammy_p'
 
