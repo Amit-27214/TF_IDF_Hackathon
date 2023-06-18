@@ -9,7 +9,7 @@ def find_encoding(fname):
 filename = 'index.txt'
 
 # Read the content of the file
-with open(filename, 'r') as f:
+with open(filename, 'r', errors ="ignore") as f:
     lines = f.readlines()
 
 # Convert all lines to lowercase
@@ -42,7 +42,7 @@ with open(filename, 'w', encoding = 'latin-1', errors ="ignore") as f:
 
 my_encoding = find_encoding(filename)
 
-with open(filename, 'r', encoding=my_encoding) as f:
+with open(filename, 'r', encoding=my_encoding, errors ="ignore") as f:
     lines = f.readlines()
 
 def preprocess(document_text):
